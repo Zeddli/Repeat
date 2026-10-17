@@ -1,0 +1,17 @@
+export type Address = `0x${string}`;
+export type Hex = `0x${string}`;
+export type MerchantId = 'a' | 'b';
+export type RecordId = 'bnb-agents' | 'bnb-identity' | 'bnb-commerce' | 'bnb-budget';
+export type PlannerMode = 'anthropic' | 'deterministic';
+export type RunStatus = 'planning' | 'running' | 'completed' | 'failed' | 'stopped';
+export type CorpusRecord = { recordId: RecordId; title: string; sourceUrl: string; corpusTimestamp: string; facts: string[] };
+export type Quote = { buyer: Address; merchant: Address; merchantId: MerchantId; name: string; sku: Hex; amount: string; basePrice: string; appliedBps: number; priorPaid: string; purchaseCount: string; offerVersion: string; blockNumber: string };
+export type RunEvent = { id: string; at: string; type: 'plan'|'quotes'|'decision'|'submitted'|'confirmed'|'delivery'|'stopped'|'error'|'recovery'; message: string; recordId?: RecordId; merchantId?: MerchantId; transactionHash?: Hex; amount?: string };
+export type DeliveryResult = CorpusRecord & { orderId: Hex; merchant: Address; deliveryStatus: 'returned' };
+export type TaskResult = { recordId: RecordId; merchantId: MerchantId; merchant: Address; orderId: Hex; transactionHash: Hex; amount: string; basePrice: string; appliedBps: number; gasCost: string; paymentStatus: 'confirmed'; deliveryStatus: 'returned'|'failed'; data?: DeliveryResult; error?: string };
+export type Run = { id: string; status: RunStatus; mission: string; maxSpend: string; spent: string; remaining: string; gasSpent: string; plannerMode: PlannerMode; taskRecordIds: RecordId[]; events: RunEvent[]; results: TaskResult[]; error?: string; createdAt: string; updatedAt: string };
+export type MerchantSnapshot = { id: MerchantId; name: string; address: Address; basePrice: string; price: string; appliedBps: number; priorPaid: string; purchaseCount: string; offerVersion: string };
+export type HistoryOrder = { buyerRole: string; buyer: Address; merchant: Address; recordId: RecordId; orderId: Hex; transactionHash: Hex; amount: string; setup: boolean };
+export type Snapshot = { ready: boolean; mode: 'local'|'bsc-testnet'|'unconfigured'; network: {chainId: number; name: string; explorerUrl: string}; planner: {mode: PlannerMode; available: boolean}; buyer: {address: Address; role: string; tokenBalance: string; gasBalance: string}; merchants: MerchantSnapshot[]; history: HistoryOrder[]; latestRun?: Run; checkoutAddress: Address; tokenAddress: Address; freshQuotes: Quote[]; recordId: RecordId; error?: string; labels: string[]; maxSpendUnits: string };
+export type TaskPlan = { mission: string; recordIds: RecordId[] };
+export type ApiError = { error: string; message: string };

@@ -1,0 +1,46 @@
+[
+  {
+    "recordId": "bnb-agents",
+    "title": "BNB Agent Studio",
+    "sourceUrl": "https://docs.bnbchain.org/developer-kit/bnbchain-studio/quickstart/",
+    "corpusTimestamp": "2026-10-17T00:15:00Z",
+    "facts": [
+      "BNB Agent Studio builds TypeScript seller agents that can run locally.",
+      "Its quickstart keeps pricing and signing in deterministic code.",
+      "This fixed demo corpus does not use Studio's native payment verification."
+    ]
+  },
+  {
+    "recordId": "bnb-identity",
+    "title": "Agent identity and trust",
+    "sourceUrl": "https://eips.ethereum.org/EIPS/eip-8004",
+    "corpusTimestamp": "2026-10-17T00:15:00Z",
+    "facts": [
+      "ERC-8004 is a draft proposal for discovering agents and establishing trust.",
+      "It describes identity, reputation and validation registries.",
+      "Payments are outside the scope of that proposal."
+    ]
+  },
+  {
+    "recordId": "bnb-commerce",
+    "title": "Agentic commerce",
+    "sourceUrl": "https://eips.ethereum.org/EIPS/eip-8183",
+    "corpusTimestamp": "2026-10-17T00:15:00Z",
+    "facts": [
+      "ERC-8183 proposes a job lifecycle for agentic commerce.",
+      "The proposal separates client, provider and evaluator roles.",
+      "Repeat's custom checkout is not an ERC-8183 implementation."
+    ]
+  },
+  {
+    "recordId": "bnb-budget",
+    "title": "A bounded buyer mission",
+    "sourceUrl": "https://eips.ethereum.org/EIPS/eip-8183",
+    "corpusTimestamp": "2026-10-17T00:15:00Z",
+    "facts": [
+      "Commerce jobs associate work with a payment budget.",
+      "In this demo, the owner approves a separate 0.06 wBSC mission cap.",
+      "A 0.04 wBSC confirmed payment leaves 0.02 wBSC for that mission; gas uses a separate balance."
+    ]
+  }
+]
