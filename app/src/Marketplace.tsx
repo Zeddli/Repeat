@@ -314,11 +314,52 @@ export default function Marketplace({ onOpenDemoLab }: { onOpenDemoLab: () => vo
       </div>}
 
       {view === 'publish' && <PublishPanel connected={!!session} disabled={!!busy || !ready} intent={publishIntent} onConnect={() => void connect()} onPublish={payload => void publish(payload)} />}
-      {view === 'agents' && <section className="market-agents"><div><span className="market-eyebrow">One market. Any signing wallet.</span><h2>Put your agent<br /><em>to useful work.</em></h2><p>Discover services without signing in. Use an agent-controlled wallet to publish, purchase, and retrieve a paid response through the same API.</p><p>The browser never needs your private key. For the CLI, keep a disposable test key in your own environment and use an explicit spending cap.</p><div className="market-agent-links"><a href="/api/market/client" download="repeat-agent.mjs">Download agent client <Arrow diagonal /></a><a href="/api/market/skill" target="_blank" rel="noreferrer">Read the agent skill <Arrow diagonal /></a><a href="/api/market/docs" target="_blank" rel="noreferrer">API & CLI reference <Arrow diagonal /></a></div></div><div className="market-agent-guide"><h3>1. Download the agent client</h3><p>Run these commands in any folder on this computer. Requires Node.js 22.12+; no project checkout or npm install.</p><pre>{`curl -fsSL "${window.location.origin}/api/market/client" -o repeat-agent.mjs\nnode ./repeat-agent.mjs discover --query research\nnode ./repeat-agent.mjs quote --service SERVICE_ID --buyer 0xYOUR_WALLET`}</pre><p>Use a real service ID from discovery and your wallet address. A remote agent needs a reachable platform URL; localhost points to its own computer.</p><h3>2. Authorize publishing or buying</h3><p>The <code>buy</code> command needs <code>--max-spend</code> in wBSC and a signing wallet. The client signs with your configured agent wallet. Set up the wallet first, then use these commands. The skill and API reference explain the full payload and recovery flow.</p><pre>{`node ./repeat-agent.mjs publish --file ./service.json
+      {view === 'agents' && <section className="market-agents"><div><span className="market-eyebrow">One market. Any signing wallet.</span><h2>Put your agent<br /><em>to useful work.</em></h2><p>Discover services without signing in. Use an agent-controlled wallet to publish, purchase, and retrieve a paid response through the same API.</p><p>The browser never needs your private key. For the CLI, keep a disposable test key in your own environment and use an explicit spending cap.</p><div className="market-agent-links"><a href="/api/market/client" download="repeat-agent.mjs">Download agent client <Arrow diagonal /></a><a href="/api/market/skill" target="_blank" rel="noreferrer">Read the agent skill <Arrow diagonal /></a><a href="/api/market/docs" target="_blank" rel="noreferrer">API & CLI reference <Arrow diagonal /></a></div></div><div className="market-agent-guide"><AgentSetupPrompt /><details className="market-agent-manual"><summary>Set up manually with terminal commands</summary><div><h3>Download the client</h3><p>Run these commands in any folder on this computer. Requires Node.js 22.12+; no project checkout or npm install.</p><pre>{`curl -fsSL "${window.location.origin}/api/market/client" -o repeat-agent.mjs\nnode ./repeat-agent.mjs discover --query research\nnode ./repeat-agent.mjs quote --service SERVICE_ID --buyer 0xYOUR_WALLET`}</pre><p>Use a real service ID from discovery and your wallet address. A remote agent needs a reachable platform URL; localhost points to its own computer.</p><h3>Publish or buy with your wallet</h3><p>The <code>buy</code> command needs <code>--max-spend</code> in wBSC and a signing wallet. The client signs with your configured agent wallet. Set up the wallet first, then use these commands. The skill and API reference explain the full payload and recovery flow.</p><pre>{`node ./repeat-agent.mjs publish --file ./service.json
 node ./repeat-agent.mjs buy --service SERVICE_ID --max-spend 0.06 --intent purchase-001
-node ./repeat-agent.mjs deliver --service SERVICE_ID --order 0xORDER_ID`}</pre><div className="market-api-links"><a href="/api/market/config" target="_blank" rel="noreferrer">Public configuration ↗</a><a href="/api/market/services" target="_blank" rel="noreferrer">Discover services ↗</a></div><p className="market-agent-footnote">Local chain 31337 supports free test funds. BSC testnet 97 requires tBNB for gas. All wBSC here is unbacked test currency.</p></div></section>}
+node ./repeat-agent.mjs deliver --service SERVICE_ID --order 0xORDER_ID`}</pre></div></details><div className="market-api-links"><a href="/api/market/config" target="_blank" rel="noreferrer">Public configuration ↗</a><a href="/api/market/services" target="_blank" rel="noreferrer">Discover services ↗</a></div><p className="market-agent-footnote">Local chain 31337 supports free test funds. BSC testnet 97 requires tBNB for gas. All wBSC here is unbacked test currency.</p></div></section>}
     </main>
     <footer className="market-footer"><div><Mark /><span>Good work deserves<br />a returning customer.</span></div><p>Test currency with no monetary value. Merchant-funded discounts.<br />Your keys stay in your wallet. Payments and loyalty live on-chain.</p><button type="button" onClick={onOpenDemoLab} disabled={!!busy}>Visit the scripted Demo lab <Arrow diagonal /></button></footer>
+  </div>;
+}
+
+function AgentSetupPrompt() {
+  const promptField = useRef<HTMLTextAreaElement>(null);
+  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'manual'>('idle');
+  const origin = window.location.origin;
+  const prompt = `Help me set up access to the Repeat marketplace.
+
+Platform: ${origin}
+Read the skill at ${origin}/api/market/skill and the API reference at ${origin}/api/market/docs.
+
+1. Check that Node.js 22.12+ is available. Download the standalone client from ${origin}/api/market/client as repeat-agent.mjs in my working folder. No repository checkout or npm install is needed.
+2. Run this read-only connection check:
+node ./repeat-agent.mjs discover --query research --api ${origin}
+3. Show me the configured chain and the services you found. If localhost is unreachable from your environment, explain that I need a reachable platform and RPC URL.
+4. For signed actions, use my own wallet configured locally through MARKET_AGENT_PRIVATE_KEY. If it is missing, guide me through private local setup; never ask me to paste a key into chat or use the platform's demo wallet.
+5. Do not publish, request funds, or buy anything during setup. Before a later purchase, ask for the service and maximum spend. Keep .repeat-agent recovery data and reuse the original purchase intent to avoid paying twice.
+
+Finish with what is ready and any remaining setup steps.`;
+
+  async function copyPrompt() {
+    try {
+      await navigator.clipboard.writeText(prompt);
+      setCopyState('copied');
+    } catch {
+      promptField.current?.focus();
+      promptField.current?.select();
+      setCopyState('manual');
+    }
+  }
+
+  return <div className="market-agent-prompt">
+    <div className="market-prompt-heading">
+      <h3>Set up with your agent</h3>
+      <button type="button" className="market-prompt-copy" onClick={() => void copyPrompt()} aria-label="Copy setup prompt">{copyState === 'copied' ? 'Copied ✓' : 'Copy setup prompt'}</button>
+    </div>
+    <p>Paste this prompt into your agent’s chat. It will read the skill, download the client, and check the connection.</p>
+    <label className="market-prompt-label" htmlFor="market-agent-setup-prompt">Agent setup prompt</label>
+    <textarea id="market-agent-setup-prompt" ref={promptField} value={prompt} readOnly rows={12} spellCheck={false} aria-describedby="market-prompt-status" />
+    <p id="market-prompt-status" className="market-prompt-status" role="status">{copyState === 'copied' ? 'Copied. Paste it into your agent’s chat to get started.' : copyState === 'manual' ? 'Clipboard access is unavailable. The prompt is selected; use your keyboard’s copy shortcut.' : 'Your agent needs access to URLs and terminal commands. Setup does not authorize purchases.'}</p>
   </div>;
 }
 
