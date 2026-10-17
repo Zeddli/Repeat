@@ -1,0 +1,49 @@
+{
+  "name": "repeat-console",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "dev:api": "tsx watch server/index.ts",
+    "build": "tsc -p tsconfig.app.json --noEmit && vite build",
+    "typecheck:server": "tsc -p tsconfig.server.json --noEmit",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run",
+    "setup:local": "tsx scripts/setup-local.ts",
+    "deploy:testnet": "tsx scripts/deploy.ts",
+    "seed": "tsx scripts/seed.ts",
+    "quote": "tsx scripts/quote.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "market:agent": "tsx scripts/market-agent.ts",
+    "check:marketplace": "tsx scripts/check-marketplace.ts",
+    "upgrade:loyalty": "tsx scripts/upgrade-service-loyalty.ts",
+    "check:agent": "tsx scripts/check-agent-marketplace.ts",
+    "build:agent": "node scripts/build-agent-client.mjs",
+    "prebuild": "npm run build:agent",
+    "pretest": "npm run build:agent",
+    "predev:api": "npm run build:agent",
+    "check:agent:standalone": "tsx scripts/check-agent-marketplace.ts --standalone"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "viem": "^2.38.0",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "esbuild": "0.28.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.12",
+    "vitest": "^3.2.4"
+  }
+}

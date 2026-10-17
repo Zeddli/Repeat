@@ -1,0 +1,19 @@
+{
+  "name": "repeat-agent-loyalty",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "setup:local": "npm --prefix app run setup:local",
+    "test": "npm --prefix app test",
+    "test:contracts": "node scripts/foundry.mjs forge test --root contracts",
+    "build": "npm --prefix app run build",
+    "typecheck": "npm --prefix app run typecheck:server",
+    "verify": "npm run test:contracts && npm test && npm run typecheck && npm run build"
+  },
+  "devDependencies": {
+    "@foundry-rs/anvil": "1.7.1",
+    "@foundry-rs/forge": "1.7.1",
+    "@openzeppelin/contracts": "5.4.0"
+  }
+}

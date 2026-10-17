@@ -24,3 +24,7 @@ app/data/marketplace-*.json.*.tmp
 
 app/generated/
 .repeat-agent/
+
+# Local chain snapshots and resumable migration checkpoints
+app/deployments/archive/31337-*.json
+app/deployments/upgrade-service-*.json
