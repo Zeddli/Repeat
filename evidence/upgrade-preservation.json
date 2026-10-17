@@ -1,0 +1,10 @@
+{
+  "verifiedAt": "2026-10-17T03:05:47.606Z",
+  "allPriorServicesRetained": 10,
+  "privateResponsesMatch": true,
+  "verifiedOldPaidOrder": "0x6b1a4dded93d53ffa4dbef7e5267d0824c2ed02726b53c7498b81fef01ec99a0",
+  "oldPaidOrderDeliveredThroughNewCheckout": true,
+  "tokenAddressUnchanged": true,
+  "oldCheckout": "0x5fc8d32690cc91d4c39d9d3abcbd16989f875707",
+  "checkout": "0x4ed7c70f96b99c776995fb64377f0d4ab3b0e1c1"
+}

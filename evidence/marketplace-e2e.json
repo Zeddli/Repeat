@@ -1,0 +1,42 @@
+{
+  "verifiedAt": "2026-10-17T02:28:39.009Z",
+  "complete": true,
+  "chainId": 31337,
+  "tokenAddress": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+  "checkoutAddress": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+  "seller": "0x5F5070D95C3922FA3F5ddc4d647CCA5Ff05Abd06",
+  "buyer": "0x569a6f5d738c2D10261dB4ba369269E51d5379f4",
+  "serviceId": "check-11904812-73fe-43b4-8f54-26f368f52932",
+  "offerHash": "0x61fa93615f621fc4cb9463d2ac69ed7a461b8a587c742673f1d1a85f584cfac7",
+  "orders": [
+    {
+      "orderId": "0xc2c9e87b1dae1f2fd7b5c11747ea23ceb5a6929e110611d78e3f978ae2f0a932",
+      "hash": "0x370ea4e277a16c4c20d7332dfd97fff7d205a580f7ca350bfc37d2fb34127b0b",
+      "amount": "50000",
+      "appliedBps": 0
+    },
+    {
+      "orderId": "0x5b1d0da7c09f3903213f4300886eec43e51296331c3f10807c71e0c0ee7f0cd1",
+      "hash": "0xb84dba2470d01d735d6e0ad8d82eba058160efbf86fa30eecabcbf3808a29d39",
+      "amount": "50000",
+      "appliedBps": 0
+    },
+    {
+      "orderId": "0xfef25a06ef1a233b29ae934fe4516627f8a49024ed6af898b80bb67667e584f3",
+      "hash": "0xbf34cfee2008a7f065c34b58795e0d08157023c2918bb92b39aee5db1b1a0c0b",
+      "amount": "40000",
+      "appliedBps": 2000
+    }
+  ],
+  "checks": [
+    "SIWE sign-in",
+    "nonce replay rejected",
+    "wrong signer rejected",
+    "wrong chain rejected",
+    "anonymous publish rejected",
+    "on-chain offer mismatch rejected",
+    "paid content hidden",
+    "unpaid delivery rejected"
+  ],
+  "note": "Disposable local wallets; six-decimal mock wBSC, no monetary value. No browser-extension signature automation claimed."
+}

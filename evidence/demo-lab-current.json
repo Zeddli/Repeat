@@ -1,0 +1,24 @@
+{
+  "verifiedAt": "2026-10-17T03:05:47.605Z",
+  "chainId": 31337,
+  "checkoutAddress": "0x4ed7c70f96b99c776995fb64377f0d4ab3b0e1c1",
+  "role": "judge",
+  "buyer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+  "tokenBalance": "770000",
+  "serviceId": "bnb-budget",
+  "services": [
+    {
+      "seller": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "paid": "80000",
+      "purchases": "2",
+      "price": "50000"
+    },
+    {
+      "seller": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "paid": "0",
+      "purchases": "0",
+      "price": "45000"
+    }
+  ],
+  "note": "Per-service paid history; purchases of different services do not qualify this tier."
+}

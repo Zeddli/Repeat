@@ -1,0 +1,65 @@
+{
+  "clientMode": "downloaded standalone client",
+  "workingDirectory": "/tmp/repeat-agent-live-ktnKA8",
+  "clientSha256": "4ba048a7a0ffee061fe981256d3b5225406676d20f8504e2a4e3818d019f2886",
+  "verifiedAt": "2026-10-17T03:41:15.938Z",
+  "status": "PASS",
+  "chainId": 31337,
+  "checkoutAddress": "0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1",
+  "tokenAddress": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+  "seller": "0xc592aDbF63170BB8A10ad886B9d2607F7d372AD8",
+  "buyer": "0x7483Ba6984D5E04213bFc0BE5ACdEE96e15b8c31",
+  "serviceA": "agent-proof-1792208397390-a",
+  "serviceB": "agent-proof-1792208397390-b",
+  "publishTransactions": [
+    "0xe819d7be73989e4dfef238f939b3582d50eed5c9687928f98ebaab501a6e042d",
+    "0xa3bfef3305a97e866f1c98e055158e438a13cd4c5bd0bc3637488783ed82f8b8"
+  ],
+  "purchasesA": [
+    {
+      "hash": "0x83e28440574976f7c51149dc812ac4be02a63253bdbae4e836f48f2876e0cfcd",
+      "orderId": "0x672be8349a98ac1a7b746a098876bf7d443668b9a13e0875c8b67b50ab61e1fc",
+      "amount": "50000"
+    },
+    {
+      "hash": "0x673271d181ed046260152ab58c625a41fe2086a4259f6853d0e6d17e424fb4ca",
+      "orderId": "0x935525c8bb72288c9ed3dac78068d6ffc8faa141f44c7c41b74a602a5ee479bf",
+      "amount": "50000"
+    },
+    {
+      "hash": "0x3dd9248af930a2844f1a0e0e92e3550b028a208e0049d076764d1450fa70445d",
+      "orderId": "0x521b53ec446ef5c854d93fcab7b0af67ccfdc9c3759a173b2e8a5e7c459c0450",
+      "amount": "40000"
+    }
+  ],
+  "firstPurchaseB": {
+    "hash": "0xf98bc873b5d6c170fafde11fcdd513eebd9db5abb694e299b139a5633a42e08a",
+    "orderId": "0x99dd87441e78b62dc61ce27fd868e21bd6f1a9b357e4ea658a58f64f456a7441",
+    "amount": "50000"
+  },
+  "after": {
+    "a": {
+      "amount": "40000",
+      "priorPaid": "140000",
+      "purchases": "3"
+    },
+    "b": {
+      "amount": "50000",
+      "priorPaid": "50000",
+      "purchases": "1"
+    }
+  },
+  "checks": [
+    "keyless discovery and personalized quote",
+    "wallet nonce sign-in",
+    "seller-owned service creation",
+    "buyer-owned signed approval and checkout",
+    "budget rejection submits zero transactions",
+    "same service earns discount after repeated payments",
+    "other service at same seller stays full price",
+    "paid private response delivery",
+    "same intent recovery submits zero new transactions",
+    "reconnected delivery"
+  ],
+  "note": "Follows the portable skill CLI workflow with disposable local EOA keys. No separate LLM/autonomous skill loader or browser extension was exercised."
+}

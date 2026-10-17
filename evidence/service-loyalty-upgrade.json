@@ -1,0 +1,19 @@
+{
+  "verifiedAt": "2026-10-17T03:04:17.677Z",
+  "chainId": 31337,
+  "tokenAddress": "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9",
+  "previousCheckoutAddress": "0x5fc8d32690cc91d4c39d9d3abcbd16989f875707",
+  "checkoutAddress": "0x4ed7c70f96b99c776995fb64377f0d4ab3b0e1c1",
+  "deploymentHash": "0x7d9acbc56752d07c144a9d350642344ea3bdb1f7ee5f66ae6486e7d2bee0aded",
+  "importHashes": [
+    "0xa39b7c1c0badb14a37131e4b169f95f7a73dcfda597f98f7e95c00ca50aa2419",
+    "0x0926ed7ba204d608a398ebd5bac3f653896c25312a47efb116244d16f37689dc",
+    "0xa0816d8d61f607617d22a6a219e1bf88cf902c419b60cedfc927775abb87d422",
+    "0xfdec1d2b9695e380f4f680171473d356348b1a5c1fe832978902d499a492df46",
+    "0x470ab5757d0cccc63c7adf2c1fe802388408de7c4d8c09ae5a45b9b4a59b49ca"
+  ],
+  "verifiedServiceLedgers": 13,
+  "importedPaidOrders": 18,
+  "preservedCatalog": true,
+  "note": "Verified old paid orders were credited by buyer/seller/SKU. No payment was replayed, token balance reset, or paid response discarded."
+}

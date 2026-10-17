@@ -1,0 +1,103 @@
+{
+  "verifiedAt": "2026-10-17T01:28:06.516Z",
+  "chainId": 31337,
+  "asset": {
+    "name": "Mock BSC",
+    "symbol": "wBSC",
+    "decimals": 6,
+    "backing": "none; local demo token"
+  },
+  "checkoutAddress": "0x5fc8d32690cc91d4c39d9d3abcbd16989f875707",
+  "tokenAddress": "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9",
+  "deploymentBlock": "1050",
+  "warmupOrders": [
+    {
+      "buyerRole": "rehearsal",
+      "buyer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "merchant": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "recordId": "bnb-agents",
+      "orderId": "0xe8e301d7ba14e230eed5b9be0c95b3734834b67ed89ece53040d21bca4292111",
+      "transactionHash": "0x6a6c479b51d3ab39eef13c7b1ed1b966713e51f7491825f25b5cbac1bdbe28e9"
+    },
+    {
+      "buyerRole": "rehearsal",
+      "buyer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "merchant": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "recordId": "bnb-identity",
+      "orderId": "0x92231a5e47174fc99894fd6040028485fc553645bd33efac22f5783e4533531e",
+      "transactionHash": "0x6b813e196c4d4c6f15ccf34c09a65ac3480a955a54399376553ff11a8e479e46"
+    },
+    {
+      "buyerRole": "rehearsal",
+      "buyer": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "merchant": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "recordId": "bnb-commerce",
+      "orderId": "0x3a6ddfa23c8b28a4df0f26b1c833219d483484733175da34a43434830cd4c01e",
+      "transactionHash": "0xe4091d642ac55990b584ffb4ed08b831b48c66cf97014a4b091536da38e0efad"
+    },
+    {
+      "buyerRole": "judge",
+      "buyer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "merchant": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "recordId": "bnb-agents",
+      "orderId": "0x6b1a4dded93d53ffa4dbef7e5267d0824c2ed02726b53c7498b81fef01ec99a0",
+      "transactionHash": "0x55bc99095c38884a301bb36d4b956d4b727be4abfe2f433757daec5b63e7e562"
+    },
+    {
+      "buyerRole": "judge",
+      "buyer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "merchant": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "recordId": "bnb-identity",
+      "orderId": "0x71340a557f06afa63e5ce3396670926e9549b740091fb3eedefc2aeeb07571fa",
+      "transactionHash": "0xb72c2ff6fc93211116fb783ca13233551d61857fa1ef564e033b9b5a7b0550c7"
+    },
+    {
+      "buyerRole": "judge",
+      "buyer": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "merchant": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "recordId": "bnb-commerce",
+      "orderId": "0xb3acf7d8be1eb00228033f267fd1c69cbefb987d7d13742fa16ccfb6d3748c8e",
+      "transactionHash": "0xc565fc4977fcbe5420c38f21b5db6c6c6a9561489409f33faf3748e937b70449"
+    }
+  ],
+  "completedRehearsals": [
+    {
+      "id": "4ea108da-be75-49d4-ad05-267f12a13ecc",
+      "plannerMode": "deterministic",
+      "cap": "60000",
+      "paid": "40000",
+      "remaining": "20000",
+      "gasSpent": "210866001476062",
+      "results": [
+        {
+          "merchant": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "orderId": "0xf335ad41442a519078124ce4ec5bd42c738fbdc40073b4ec41f95d29e3f69265",
+          "transactionHash": "0x33367e365c3b649a37303d919de27f1aa6f3a26c3f3f2e59c96301dc733557d6",
+          "amount": "40000",
+          "paymentStatus": "confirmed",
+          "deliveryStatus": "returned"
+        }
+      ]
+    },
+    {
+      "id": "23f069c7-3062-425a-93c1-e0a1b5c290a0",
+      "plannerMode": "deterministic",
+      "cap": "60000",
+      "paid": "40000",
+      "remaining": "20000",
+      "gasSpent": "210878001476146",
+      "results": [
+        {
+          "merchant": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "orderId": "0xbf6f15c186ecb7b3050b6de7d04cae6de496376e3d78431d3c0e6ad48839e814",
+          "transactionHash": "0xd10266abc492d5f9bbe014c98e545da8a2809f0bb2e62e7d4492c671dfb3f993",
+          "amount": "40000",
+          "paymentStatus": "confirmed",
+          "deliveryStatus": "returned"
+        }
+      ]
+    }
+  ],
+  "bscTestnetDeployment": false,
+  "liveModelVerified": false
+}
