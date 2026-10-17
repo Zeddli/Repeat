@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { privateKeyToAccount } from 'viem/accounts';
+import { createPublicClient, http, parseAbi, type Hex } from 'viem';
+import { foundry } from 'viem/chains';
+import dotenv from 'dotenv';
+import { deliveryMessage } from '../server/service.js';
+import type { Deployment } from './deploy.js';
+import type { DeliveryResult } from '../shared/types.js';
+dotenv.config({path:'.env.local',quiet:true});
+const metadata=JSON.parse(await readFile(new URL('../deployments/31337.json',import.meta.url),'utf8')) as Deployment;
+assert.equal(metadata.chainId,31337);
+const client=createPublicClient({chain:foundry,transport:http(metadata.rpcUrl)});
+assert.equal(await client.getChainId(),31337);
+const abi=parseAbi(['function name() view returns(string)','function symbol() view returns(string)','function decimals() view returns(uint8)','function balanceOf(address) view returns(uint256)']);
+assert.equal(await client.readContract({address:metadata.tokenAddress,abi,functionName:'name'}),'Mock BSC');
+assert.equal(await client.readContract({address:metadata.tokenAddress,abi,functionName:'symbol'}),'wBSC');
+assert.equal(await client.readContract({address:metadata.tokenAddress,abi,functionName:'decimals'}),6);
+for(const item of metadata.warmupOrders){
+ const key=item.buyerRole==='judge'?process.env.JUDGE_BUYER_PRIVATE_KEY:process.env.BUYER_PRIVATE_KEY;
+ assert.ok(key);
+ const account=privateKeyToAccount(key as Hex);
+ assert.equal(account.address.toLowerCase(),item.buyer.toLowerCase());
+ const request={orderId:item.orderId,recordId:item.recordId,expiresAt:Math.floor(Date.now()/1000)+120};
+ const signature=await account.signMessage({message:deliveryMessage(31337,metadata.checkoutAddress,item.merchant,request)});
+ const response=await fetch('http://127.0.0.1:3001/service/a/data',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...request,buyerSignature:signature})});
+ assert.equal(response.status,200);
+ const record=await response.json() as DeliveryResult;
+ assert.equal(record.recordId,item.recordId);
+ assert.equal(record.deliveryStatus,'returned');
+}
+console.log('PASS: live contract is Mock BSC/wBSC; all six historical paid records delivered through signed access.');
